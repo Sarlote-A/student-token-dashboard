@@ -1,4 +1,4 @@
-// Fill in after deploying both contracts in Remix.
+// Deployed GLD072 / SLV072 contracts on Sepolia.
 const TOKENS = {
   A: { address: "0x07eEc8499bC9f824fF6570a13867c3B1A5f84bA4", symbol: "GLD072" },
   B: { address: "0x08945bC23e0022AE2876998EA5fd29F952A3F3E8", symbol: "SLV072" },

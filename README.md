@@ -46,13 +46,28 @@ Ask the creator wallet above for a transfer, then add each contract address in M
 
 ## Tests
 
-| Test | Result |
-|---|---|
-| Invalid address | Rejected before MetaMask opens |
-| Zero / excess amount | Rejected with message |
-| Wrong network | Warning shown, Send disabled |
-| MetaMask cancel | "Transaction cancelled", no success shown |
-| Reload | Balances re-read from chain |
+Tested on the live GitHub Pages site with MetaMask on Sepolia (20 Oct 2026).
+
+| Test | Expected | Result |
+|---|---|---|
+| Connect wallet, show balances | Address and both balances shown | ✅ 9979 GLD072 / 99979 SLV072 |
+| Transfer 1 GLD072 to Serhii `0x2E5f…0515` | Confirmed, balance decreases | ✅ [tx](https://sepolia.etherscan.io/tx/0xcb54fa196ae2db5925db29a85a283399e1c3cb46d343415639b78669e4935902), balance 9978 |
+| Invalid address (`0x123`) | Rejected before MetaMask opens | ✅ "Invalid destination address." |
+| Zero amount | Rejected | ✅ "Amount must be greater than zero." |
+| Excess amount (999999) | Rejected | ✅ "Insufficient token balance." |
+| Cancel in MetaMask | No success shown | ✅ "Transaction cancelled in MetaMask. Nothing was sent." |
+| Reload | Balances re-read from chain | ✅ 9978 / 99979 |
+| Wrong network | Warning shown, Send disabled, switch to Sepolia requested | Implemented in `app.js` (`onSepolia`) |
+
+### Screenshots
+
+Balances after connecting:
+
+![Balances](screenshots/01-balances.png)
+
+Successful transfer through the dashboard:
+
+![Transfer confirmed](screenshots/02-transfer-confirmed.png)
 
 ## Gas
 
